@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="./utils/dataKeyFunction.js"></script>
+    <script>
+
+        // API 데이터 
+        let API_DATA;
+        $.ajax({
+            url : './file/DATA.json',
+            async:false,
+            success : function(result){
+                API_DATA = result;
+            }
+        })
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">Toy</a>
+      
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 mt-4 mb-4">
+              <div class="jumbotron">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <label>강좌명 : </label>
+                    <input type="text" class="form-control ml-2">
+                  </div>   
+                  <div class="form-group ml-4">
+                    <label>강사명 : </label>
+                    <input type="text" class="form-control ml-2">
+                  </div>  
+
+                  <div class="form-group ml-4">
+                    <label>교육시작일자 : </label>
+                    <input type="text" class="form-control ml-2">
+
+                    <label class="ml-2">교육시작종료일자 : </label>
+                    <input type="text" class="form-control ml-2">
+                  </div>  
+                  <div class="form-group ml-4">
+                    <label>강사대상구분 : </label>
+                    <select class="form-control ml-2">
+                      <option>선택</option>
+                    </select>
+                  </div>  
+                   
+                  <div class="form-group ml-4">
+                      <input type="button" class="btn btn-info" value="검색">  
+                  </div>
+
+                </form>
+              </div>
+            </div>
+            <div class="col-sm-12">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>강좌명</th>
+                        <th>강사명</th>
+                        <th>교육시작일자</th>
+                        <th>교육종료일자</th>
+                        <th>강좌대상구분</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dataTbody">
+
+                    </tbody>   
+                </table>
+            </div>
+        </div>
+      </div>
+
+      
+      <script>
+
+
+        $(document).ready(function(){
+            console.log(API_DATA);
+
+            let tag = '';
+
+              for(let j = 0; j < API_DATA.records.length; j++){
+                if(j <= 500){
+                  tag += '<tr>';
+                    tag += '<td>'+API_DATA.records[j]['강좌명']+'</td>';
+                    tag += '<td>'+API_DATA.records[j]['강사명']+'</td>';
+                    tag += '<td>'+API_DATA.records[j]['교육시작일자']+'</td>';
+                    tag += '<td>'+API_DATA.records[j]['교육종료일자']+'</td>';
+                    tag += '<td>'+API_DATA.records[j]['교육대상구분']+'</td>';
+                  tag += '</tr>';
+                }
+              }
+              
+              $('#dataTbody').html(tag);
+        });
+
+
+      </script>
+
+</body>
+</html>

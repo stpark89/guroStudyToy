@@ -8,19 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-    <script>
-
-        // API 데이터 
-        let API_DATA;
-        $.ajax({
-            url : './file/DATA.json',
-            async:false,
-            success : function(result){
-                API_DATA = result;
-            }
-        })
-    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -50,27 +37,54 @@
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1>Bootstrap Tutorial</h1>      
+          <h1>전국평생학습강좌</h1>      
           <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
         </div>
-      </div>
+     </div>
 
-
-      <script>
-
-
-        $(document).ready(function(){
-            console.log(API_DATA);
-            console.log(API_DATA.fields);
-            API_DATA.fields.map(v => {
-                console.log("map");
-                console.log(v.id);
-            })
-
-        });
-
-
-      </script>
-
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">강좌보기</h4>
+                      <p class="card-text">내게 맞는 강좌를 찾아보세요 !</p>
+                      <a href="/Class.html" class="card-link">강좌보기</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">강좌 신청방법</h4>
+                      <p class="card-text">Some example text. Some example text.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">소개</h4>
+                      <p class="card-text">Some example text. Some example text.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">공지사항 / QnA</h4>
+                      <p class="card-text">Some example text. Some example text.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+     </div>
 </body>
 </html>
